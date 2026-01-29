@@ -1,0 +1,32 @@
+# Core ML
+torch>=2.1.0
+transformers>=4.36.0
+numpy>=1.24.0
+
+# Interpretability libraries
+transformer_lens>=2.0.0
+sae_lens>=4.0.0
+# pyvene>=0.1.0   # install from git: pip install git+https://github.com/stanfordnlp/pyvene.git
+# nnsight>=0.3.0  # install from git: pip install git+https://github.com/ndif-team/nnsight.git
+
+# Visualization
+matplotlib>=3.7.0
+plotly>=5.18.0
+seaborn>=0.13.0
+ipywidgets>=8.0.0
+
+# Notebook
+jupyter>=1.0.0
+ipykernel>=6.25.0
+
+# Research tracker
+requests>=2.31.0
+pyyaml>=6.0.0
+feedparser>=6.0.0
+semanticscholar>=0.8.0
+
+# Utilities
+tqdm>=4.65.0
+pandas>=2.0.0
+einops>=0.7.0
+jaxtyping>=0.2.25

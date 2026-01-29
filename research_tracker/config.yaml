@@ -1,0 +1,116 @@
+# Research Tracker Configuration
+# Modify search terms, authors, and keywords to customize tracking
+
+arxiv:
+  # Search queries for arXiv API
+  queries:
+    - "mechanistic interpretability"
+    - "sparse autoencoders language models"
+    - "circuit tracing neural networks"
+    - "activation patching transformers"
+    - "representation engineering LLM"
+    - "logit lens transformer"
+    - "linear probing language models"
+    - "superposition neural networks features"
+    - "dictionary learning neural networks"
+    - "interpretability safety alignment"
+
+  # Maximum results per query
+  max_results_per_query: 20
+
+  # Categories to search in
+  categories:
+    - cs.LG
+    - cs.AI
+    - cs.CL
+
+semantic_scholar:
+  # Tracked authors (Semantic Scholar author IDs or names)
+  # Add author IDs from semanticscholar.org for precise tracking
+  tracked_authors:
+    - "Neel Nanda"
+    - "Chris Olah"
+    - "Nelson Elhage"
+    - "Tom Lieberum"
+    - "Arthur Conmy"
+    - "Samuel Marks"
+    - "Andy Zou"
+    - "Nora Belrose"
+    - "Joseph Bloom"
+    - "Hoagy Cunningham"
+    - "Dan Hendrycks"
+    - "Jacob Steinhardt"
+
+  # Additional keyword searches
+  queries:
+    - "mechanistic interpretability large language models"
+    - "sparse autoencoder interpretability"
+
+# Relevance scoring keywords (higher weight = more relevant)
+relevance_keywords:
+  high:  # weight: 3
+    - "mechanistic interpretability"
+    - "sparse autoencoder"
+    - "SAE"
+    - "superposition"
+    - "circuit tracing"
+    - "attribution graph"
+    - "monosemanticity"
+    - "polysemantic"
+  medium:  # weight: 2
+    - "activation patching"
+    - "causal tracing"
+    - "logit lens"
+    - "tuned lens"
+    - "representation engineering"
+    - "steering vector"
+    - "linear probe"
+    - "feature extraction"
+    - "dictionary learning"
+    - "TransformerLens"
+    - "Neuronpedia"
+  low:  # weight: 1
+    - "interpretability"
+    - "explainability"
+    - "transformer"
+    - "attention mechanism"
+    - "neural network analysis"
+    - "model understanding"
+
+# Topic categories for digest organization
+topic_categories:
+  SAE: ["sparse autoencoder", "dictionary learning", "monosemantic", "feature extraction"]
+  Circuits: ["circuit", "activation patching", "causal tracing", "attribution graph", "circuit tracing"]
+  Probing: ["linear probe", "probing classifier", "representation analysis", "geometry of truth"]
+  Representation: ["representation engineering", "steering vector", "activation addition", "control vector"]
+  Lens: ["logit lens", "tuned lens", "intermediate predictions"]
+  Superposition: ["superposition", "polysemantic", "feature geometry"]
+  Safety: ["alignment", "safety", "deception detection", "monitoring"]
+  Tools: ["TransformerLens", "SAELens", "Neuronpedia", "pyvene", "nnsight"]
+  Theory: ["theoretical", "mathematical framework", "formal"]
+
+# Notebook mapping (which guide notebook each topic relates to)
+notebook_mapping:
+  SAE: "03_sparse_autoencoders.ipynb"
+  Circuits: "04_mechanistic_interp.ipynb"
+  Probing: "06_probing.ipynb"
+  Representation: "07_representation_eng.ipynb"
+  Lens: "05_logit_lens.ipynb"
+  Superposition: "02_superposition.ipynb"
+  Safety: "10_open_problems.ipynb"
+  Tools: "09_tools_practice.ipynb"
+  Theory: "01_transformer_circuits.ipynb"
+
+# Relevance scoring settings
+scoring:
+  # TF-IDF similarity is computed against reference abstracts built into tracker.py
+  # The combined score = keyword_score + (tfidf_similarity * 10)
+  # Papers with combined score >= 5 get guide update suggestions in digests
+  tfidf_weight: 10  # Multiplier for TF-IDF similarity (0-1 range scaled by this)
+  suggestion_min_score: 5  # Minimum score for a paper to generate guide update suggestions
+
+# Output settings
+output:
+  papers_db: "research_tracker/papers_db.json"
+  digests_dir: "digests"
+  days_lookback: 30  # How far back to search for new papers
